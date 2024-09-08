@@ -1,8 +1,13 @@
-# React + Vite
+# PWebFrontEnd
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ejercicios prácticos de la materia Programación Web
 
-Currently, two official plugins are available:
+UNIVERSIDAD NACIONAL DE VILLA MERCEDES
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Carrera: Ingeniería en Sistemas de Información.
+
+Materia: Programación web.
+
+Profesor/res: Walter Molina.
+
+Alumno: Germán Adrián Muñoz.
