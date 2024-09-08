@@ -2,11 +2,15 @@ import Title from "../Title";
 import AddTask from "../AddTask";
 
 /* eslint-disable react/prop-types */
-function Header({ name }) {
+function Header({ name, newTask, setNewTask, handleAddTask }) {
   return (
     <div>
       <Title name={name} />
-      <AddTask />
+      <AddTask
+        newTask={newTask}
+        setNewTask={setNewTask}
+        handleAddTask={handleAddTask}
+      />
     </div>
   );
 }

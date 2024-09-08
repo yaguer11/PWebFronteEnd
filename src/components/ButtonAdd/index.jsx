@@ -1,5 +1,6 @@
-function ButtonAdd() {
-  return <button>Agregar</button>;
+/* eslint-disable react/prop-types */
+function ButtonAdd({ onClick }) {
+  return <button onClick={onClick}>Agregar</button>;
 }
 
 export default ButtonAdd;

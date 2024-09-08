@@ -1,11 +1,12 @@
 import InputText from "../InputText";
 import ButtonAdd from "../ButtonAdd";
 
-function AddTask() {
+/* eslint-disable react/prop-types */
+function AddTask({ newTask, setNewTask, handleAddTask }) {
   return (
     <div className="contenedor-entrada">
-      <InputText />
-      <ButtonAdd />
+      <InputText value={newTask} onChange={(e) => setNewTask(e.target.value)} />
+      <ButtonAdd onClick={handleAddTask} />
     </div>
   );
 }
