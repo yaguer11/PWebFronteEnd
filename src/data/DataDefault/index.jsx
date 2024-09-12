@@ -7,4 +7,5 @@ export const tasks = [
   "Comprar funda",
   "Ir supermercado",
   "Vender lavarropas",
+  "comprar fundas",
 ];
