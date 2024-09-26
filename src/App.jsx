@@ -3,7 +3,6 @@ import styles from "../src/styles/App.module.scss";
 import Header from "../src/components/Header";
 import AddTask from "../src/components/AddTask";
 import Task from "../src/components/Task";
-import { Divider } from "@mui/material";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -42,7 +41,7 @@ function App() {
     >
       <Header onToggleTheme={toggleTheme} theme={theme} />
       <AddTask onAddTask={addTask} theme={theme} />
-      <Divider
+      <hr
         className={`${styles.divider} ${
           theme === "light" ? styles.lightTheme : styles.darkTheme
         }`}
