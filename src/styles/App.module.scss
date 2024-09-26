@@ -1,11 +1,21 @@
 @import "../styles/variables.scss";
 
+html,
+body {
+  &.lightTheme {
+    background-color: $blanco;
+  }
+
+  &.darkTheme {
+    background-color: $negro;
+  }
+}
+
 .contenedor {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   padding: 16px;
   box-sizing: border-box;
   &.lightTheme {

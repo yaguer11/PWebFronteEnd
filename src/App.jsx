@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../src/styles/App.module.scss";
 import Header from "../src/components/Header";
 import AddTask from "../src/components/AddTask";
@@ -7,6 +7,11 @@ import Task from "../src/components/Task";
 function App() {
   const [theme, setTheme] = useState("light");
   const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    document.body.className =
+      theme === "light" ? styles.lightTheme : styles.darkTheme;
+  }, [theme]);
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
