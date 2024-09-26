@@ -1,0 +1,55 @@
+@import "../styles/variables.scss";
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 16px;
+  box-sizing: border-box;
+  &.lightTheme {
+    background-color: $blanco;
+  }
+
+  &.darkTheme {
+    background-color: $negro;
+  }
+}
+
+.divider {
+  height: 2px;
+  width: 100%;
+  max-width: 512px;
+  margin: 16px 0 !important;
+  &.lightTheme {
+    background-color: $blanco20;
+  }
+
+  &.darkTheme {
+    background-color: $negro50;
+  }
+}
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 512px;
+}
+
+.emptyMessage {
+  font-size: 24px;
+  font-family: "Roboto", sans-serif;
+
+  text-align: center;
+  &.lightTheme {
+    color: $negro;
+  }
+
+  &.darkTheme {
+    color: $blanco;
+  }
+}

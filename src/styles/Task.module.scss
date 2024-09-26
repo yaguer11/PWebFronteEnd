@@ -1,0 +1,117 @@
+@import "../styles/variables.scss";
+
+.contenedorTarea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 512px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 4px;
+  margin: 4px;
+  &.lightTheme {
+    background-color: $blanco20;
+  }
+
+  &.darkTheme {
+    background-color: $negro10;
+  }
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  appearance: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+
+  &.lightTheme {
+    background-color: $blanco20;
+    border: 2px solid $negro;
+    &::after {
+      content: "✔";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+      color: $negro;
+      display: none;
+    }
+    &:checked {
+      &::after {
+        display: block;
+      }
+    }
+  }
+  &.darkTheme {
+    background-color: $negro10;
+    border: 2px solid $blanco;
+
+    &::after {
+      content: "✔";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+      color: $blanco;
+      display: none;
+    }
+
+    &:checked {
+      &::after {
+        display: block;
+      }
+    }
+  }
+}
+
+.textoTarea {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  flex-grow: 1;
+  margin-right: 8px;
+
+  &.lightTheme {
+    color: $negro;
+  }
+
+  &.darkTheme {
+    color: $blanco;
+  }
+}
+
+.botonesTask {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  margin: 2px;
+  border: none;
+  cursor: pointer;
+  &.lightTheme {
+    background-color: $blanco20;
+    color: $negro;
+    border: 2px solid $negro;
+  }
+
+  &.darkTheme {
+    background-color: $negro10;
+    color: $blanco;
+    border: 2px solid $blanco;
+  }
+}
+
+.completada {
+  text-decoration: line-through;
+  &.lightTheme {
+    color: $negro;
+  }
+
+  &.darkTheme {
+    color: $blanco;
+  }
+}

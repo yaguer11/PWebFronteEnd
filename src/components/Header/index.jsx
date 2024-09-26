@@ -1,17 +1,29 @@
-import Title from "../Title";
-import AddTask from "../AddTask";
+import styles from "../../styles/Header.module.scss";
 
 /* eslint-disable react/prop-types */
-function Header({ name, newTask, setNewTask, handleAddTask }) {
+function Header({ onToggleTheme, theme }) {
   return (
-    <div>
-      <Title name={name} />
-      <AddTask
-        newTask={newTask}
-        setNewTask={setNewTask}
-        handleAddTask={handleAddTask}
-      />
-    </div>
+    <header className={styles.header}>
+      <h1
+        className={`${styles.textoEncabezado} ${
+          theme === "light" ? styles.lightTheme : styles.darkTheme
+        }`}
+      >
+        Lista de tareas
+      </h1>
+      <button
+        onClick={onToggleTheme}
+        className={`${styles.botonTema} ${
+          theme === "light" ? styles.lightTheme : styles.darkTheme
+        }`}
+      >
+        {theme === "light" ? (
+          <span className="material-symbols-outlined">dark_mode</span>
+        ) : (
+          <span className="material-symbols-outlined">light_mode</span>
+        )}
+      </button>
+    </header>
   );
 }
 

@@ -1,0 +1,58 @@
+@import "../styles/variables.scss";
+
+.contenedorEntrada {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 512px;
+  gap: 2px;
+  box-sizing: border-box;
+  &.lightTheme {
+    background-color: $blanco20;
+  }
+
+  &.darkTheme {
+    background-color: $negro50;
+  }
+}
+
+.input {
+  width: 100%;
+  font-size: 24px;
+  padding: 8px;
+  border: none;
+  font-family: "Roboto", sans-serif;
+  &.lightTheme {
+    background-color: $blanco20;
+    color: $negro;
+  }
+
+  &.darkTheme {
+    background-color: $negro50;
+    color: $blanco;
+  }
+}
+
+.botonAgregar {
+  width: 48px;
+  height: 48px;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: $negro50;
+  color: $blanco;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+  &.lightTheme {
+    background-color: $blanco20;
+    color: $negro;
+    border: 2px solid $negro;
+  }
+
+  &.darkTheme {
+    background-color: $negro10;
+    color: $blanco;
+    border: 1px solid $blanco;
+  }
+}

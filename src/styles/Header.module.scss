@@ -1,0 +1,47 @@
+@import "../styles/variables.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Asegura que el header ocupe todo el ancho */
+  max-width: 512px;
+  padding: 8px;
+}
+
+.textoEncabezado {
+  font-size: 36px;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 8px;
+  &.lightTheme {
+    color: $negro;
+  }
+
+  &.darkTheme {
+    color: $blanco;
+  }
+}
+
+.botonTema {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background-color: $rojo;
+  color: $blanco;
+  border: none;
+  cursor: pointer;
+  &.lightTheme {
+    background-color: $blanco20;
+    color: $negro;
+    border: 2px solid $negro;
+  }
+
+  &.darkTheme {
+    background-color: $negro10;
+    color: $blanco;
+    border: 1px solid $blanco;
+  }
+}

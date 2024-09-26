@@ -1,54 +1,74 @@
-import "./App.css";
-import Header from "./components/Header";
-import Task from "./components/Task";
 import { useState } from "react";
-import { name } from "./data/DataDefault";
+import styles from "../src/styles/App.module.scss";
+import Header from "../src/components/Header";
+import AddTask from "../src/components/AddTask";
+import Task from "../src/components/Task";
+import { Divider } from "@mui/material";
 
 function App() {
-  const [newTask, setNewTask] = useState([]);
+  const [theme, setTheme] = useState("light");
   const [tasks, setTasks] = useState([]);
 
-  const handleAddTask = () => {
-    if (newTask.trim()) {
-      const newTaskObj = { text: newTask, completed: false };
-      setTasks([newTaskObj, ...tasks]);
-      setNewTask("");
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
+
+  const addTask = (taskText) => {
+    if (taskText.trim() !== "") {
+      setTasks([
+        ...tasks,
+        { id: Date.now(), text: taskText, completed: false },
+      ]);
     }
   };
 
-  const handleDeleteTask = (tasksToDelete) => {
-    setTasks(tasks.filter((task) => task !== tasksToDelete));
+  const deleteTask = (taskId) => {
+    setTasks(tasks.filter((task) => task.id !== taskId));
   };
 
-  const handleToggleTask = (taskToToggle) => {
+  const toggleTaskCompletion = (taskId) => {
     setTasks(
       tasks.map((task) =>
-        task === taskToToggle ? { ...task, completed: !task.completed } : task
+        task.id === taskId ? { ...task, completed: !task.completed } : task
       )
     );
   };
 
   return (
-    <div className="contenedor">
-      <Header
-        name={name}
-        newTask={newTask}
-        setNewTask={setNewTask}
-        handleAddTask={handleAddTask}
+    <div
+      className={`${styles.contenedor} ${
+        theme === "light" ? styles.lightTheme : styles.darkTheme
+      }`}
+    >
+      <Header onToggleTheme={toggleTheme} theme={theme} />
+      <AddTask onAddTask={addTask} theme={theme} />
+      <Divider
+        className={`${styles.divider} ${
+          theme === "light" ? styles.lightTheme : styles.darkTheme
+        }`}
       />
-      {tasks.length === 0 ? (
-        <p>No hay tareas pendientes</p>
-      ) : (
-        tasks.map((task, index) => (
-          <Task
-            key={index}
-            text={task.text}
-            completed={task.completed}
-            onDelete={() => handleDeleteTask(task)}
-            onToggle={() => handleToggleTask(task)}
-          />
-        ))
-      )}
+      <div className={styles.taskList}>
+        {tasks.length > 0 ? (
+          tasks.map((task) => (
+            <Task
+              key={task.id}
+              texto={task.text}
+              completed={task.completed}
+              onDelete={() => deleteTask(task.id)}
+              onToggle={() => toggleTaskCompletion(task.id)}
+              theme={theme}
+            />
+          ))
+        ) : (
+          <p
+            className={`${styles.emptyMessage} ${
+              theme === "light" ? styles.lightTheme : styles.darkTheme
+            }`}
+          >
+            No hay tareas por mostrar
+          </p>
+        )}
+      </div>
     </div>
   );
 }
