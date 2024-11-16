@@ -7,6 +7,7 @@ import Task from "../src/components/Task";
 function App() {
   const [theme, setTheme] = useState("light");
   const [tasks, setTasks] = useState([]);
+  const [mensaje, setMensaje] = useState("");
 
   useEffect(() => {
     document.body.className =
@@ -28,6 +29,7 @@ function App() {
 
   const deleteTask = (taskId) => {
     setTasks(tasks.filter((task) => task.id !== taskId));
+    mostrarMensaje("Tarea eliminada con éxito");
   };
 
   const toggleTaskCompletion = (taskId) => {
@@ -36,6 +38,11 @@ function App() {
         task.id === taskId ? { ...task, completed: !task.completed } : task
       )
     );
+  };
+
+  const mostrarMensaje = (texto) => {
+    setMensaje(texto);
+    setTimeout(() => setMensaje(""), 2000);
   };
 
   return (
@@ -51,6 +58,15 @@ function App() {
           theme === "light" ? styles.lightTheme : styles.darkTheme
         }`}
       />
+      {mensaje && (
+        <div
+          className={`${styles.mensaje} ${
+            theme === "light" ? styles.lightTheme : styles.darkTheme
+          }`}
+        >
+          {mensaje}
+        </div>
+      )}
       <div className={styles.taskList}>
         {tasks.length > 0 ? (
           tasks.map((task) => (

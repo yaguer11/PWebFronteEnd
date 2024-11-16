@@ -1,14 +1,22 @@
+import { useState } from "react";
 import styles from "../../styles/Task.module.scss";
 
 /* eslint-disable react/prop-types */
 function Task({ texto, completed, onDelete, onToggle, theme }) {
+  const [mensaje, setMensaje] = useState();
+
+  const mostrarMensaje = (texto) => {
+    setMensaje(texto);
+    setTimeout(() => setMensaje(""), 2000);
+  };
+
   const handleCopy = (texto) => {
     navigator.clipboard.writeText(texto).then(
       () => {
-        alert("Texto copiado al portapapeles");
+        mostrarMensaje("Texto copiado al portapapeles");
       },
       () => {
-        alert("Error al copiar el texto");
+        mostrarMensaje("Error al copiar el texto");
       }
     );
   };
@@ -21,14 +29,14 @@ function Task({ texto, completed, onDelete, onToggle, theme }) {
           text: texto,
         })
         .then(() => {
-          alert("Tarea compartida con éxito");
+          mostrarMensaje("Tarea compartida con éxito");
         })
         .catch((error) => {
-          alert("Error al compartir la tarea");
+          mostrarMensaje("Error al compartir la tarea");
           console.error("Error al compartir:", error);
         });
     } else {
-      alert("El navegador no soporta la funcionalidad de compartir");
+      mostrarMensaje("El navegador no soporta la funcionalidad de compartir");
     }
   };
 
@@ -77,6 +85,15 @@ function Task({ texto, completed, onDelete, onToggle, theme }) {
       >
         <span className="material-symbols-outlined">delete</span>
       </button>
+      {mensaje && (
+        <div
+          className={`${styles.mensaje} ${
+            theme === "light" ? styles.lightTheme : styles.darkTheme
+          }`}
+        >
+          {mensaje}
+        </div>
+      )}
     </div>
   );
 }
